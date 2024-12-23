@@ -12,3 +12,7 @@ guessText.style.display = "block"
 resetButton.onclick = function () {
     guessText.style.display = "none"
 }
+
+userInput.addEventListener('input', (event) => {
+    console.log(event.target.value)
+})
