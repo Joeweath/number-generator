@@ -2,7 +2,7 @@ html, body {
     height: 100%; /* Ensure html and body fill the entire viewport */
     margin: 0;    /* Remove default margins */
     padding: 0;
-    
+    box-sizing: border-box;
 }
 
 body {
@@ -28,6 +28,8 @@ justify-self: flex-end;
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    
 }
 
 #card-text {
