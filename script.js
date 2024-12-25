@@ -1,16 +1,17 @@
 const cardInfo = document.querySelector("#card");
 const startButton = document.getElementById("start-btn")
 const resetButton = document.getElementById("reset-btn")
-const guessText = document.getElementById("guess-text");
+let guessText = document.getElementById("guess-text");
 const userInput = document.getElementById("user-input");
 const cardText = document.getElementById("card-text")
 let currentNum;
-let currentInputValue = ""
+let currentInputValue;
 
 
 
 startButton.onclick = function () {
     startGame()
+    startButton.style.display = "none"
 }
 
 resetButton.onclick = function () {
@@ -18,12 +19,16 @@ resetButton.onclick = function () {
     userInput.value = ""
     cardText.innerText = "?"
     cardText.style.fontSize = "10rem"
+    startButton.style.display = "inline"
 }
 
 userInput.addEventListener('input', (event) => {
-    console.log(event.target.value)
     currentInputValue = event.target.value
+    if(currentInputValue == currentNum){
+        gameOver()
+    } 
 })
+
 
 const randomNumber = () => {
     currentNum = Math.floor(Math.random()* 101)
@@ -33,9 +38,15 @@ const randomNumber = () => {
     return currentNum
 }
 
+const gameOver = () => {
+    guessText.innerText = "Yay you won!"
+    cardText.innerText = currentNum
+    startButton.style.display = "none"
+}
 const startGame = () =>{
     resetButton.style.display = "inline"
     guessText.style.display = "block"
     randomNumber()
-    cardText.innerText = currentNum
+    console.log(currentNum, currentInputValue)
+   
 }
